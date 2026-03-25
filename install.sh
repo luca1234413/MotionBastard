@@ -5,14 +5,13 @@ set -e
 
 INSTALL_DIR="/Library/Application Support/Adobe/CEP/extensions/motion-ai-panel"
 REPO_URL="https://github.com/BerlinKing/MotionBastard.git"
-CSI_URL="https://raw.githubusercontent.com/nickvdh/cep-resources/main/CSInterface_12.js"
 
 echo ""
 echo "🤬 MotionBastard Installer"
 echo "=========================="
 echo ""
 
-# 1. Clone repo
+# 1. Clone or update repo
 if [ -d "$INSTALL_DIR" ]; then
     echo "→ Updating existing installation..."
     cd "$INSTALL_DIR"
@@ -22,11 +21,7 @@ else
     sudo git clone "$REPO_URL" "$INSTALL_DIR"
 fi
 
-# 2. Download CSInterface.js
-echo "→ Downloading Adobe CSInterface.js..."
-sudo curl -sL "$CSI_URL" -o "$INSTALL_DIR/js/CSInterface.js"
-
-# 3. Enable unsigned extensions
+# 2. Enable unsigned extensions
 echo "→ Enabling unsigned CEP extensions..."
 defaults write com.adobe.CSXS.12 PlayerDebugMode 1
 
