@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Motion AI Assistant</title>
+    <title>MotionBastard</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -24,8 +24,8 @@
             </button>
             <button class="btn-icon" id="settingsBtn" title="Settings">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12.22 2h-.44a2 2 0 00-2 2v.18a2 2 0 01-1 1.73l-.43.25a2 2 0 01-2 0l-.15-.08a2 2 0 00-2.73.73l-.22.38a2 2 0 00.73 2.73l.15.1a2 2 0 011 1.72v.51a2 2 0 01-1 1.74l-.15.09a2 2 0 00-.73 2.73l.22.38a2 2 0 002.73.73l.15-.08a2 2 0 012 0l.43.25a2 2 0 011 1.73V20a2 2 0 002 2h.44a2 2 0 002-2v-.18a2 2 0 011-1.73l.43-.25a2 2 0 012 0l.15.08a2 2 0 002.73-.73l.22-.39a2 2 0 00-.73-2.73l-.15-.08a2 2 0 01-1-1.74v-.5a2 2 0 011-1.74l.15-.09a2 2 0 00.73-2.73l-.22-.38a2 2 0 00-2.73-.73l-.15.08a2 2 0 01-2 0l-.43-.25a2 2 0 01-1-1.73V4a2 2 0 00-2-2z"></path>
                     <circle cx="12" cy="12" r="3"></circle>
-                    <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
                 </svg>
             </button>
         </div>
@@ -38,8 +38,8 @@
                 <div class="chat-messages" id="chatMessages">
                     <!-- Welcome state -->
                     <div class="welcome" id="welcomeState">
-                        <div class="welcome-title">Motion AI Assistant</div>
-                        <div class="welcome-sub">Describe your motion effect — I'll figure out the best way to build it.</div>
+                        <div class="welcome-title">MotionBastard</div>
+                        <div class="welcome-sub">Describe what you want. I'll figure out how to build it.</div>
                     </div>
                 </div>
 
@@ -48,7 +48,7 @@
                     <div class="input-bar-inner">
                         <div class="input-images" id="inputImages"></div>
                         <div class="input-wrap">
-                            <textarea id="chatInput" placeholder="Describe your motion effect..." rows="3"></textarea>
+                            <textarea id="chatInput" placeholder="描述你的动效需求... 遇到报错？直接截图给我" rows="3"></textarea>
                             <div class="input-bottom">
                                 <button class="input-inline-btn" id="imgUploadBtn" title="Upload reference image (max 3)">
                                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -81,22 +81,6 @@
                 <div class="preview-area" id="previewArea">
                     <div class="preview-container" id="previewContainer">
                         <div class="preview-empty">Preview will appear here<br>when animation code is generated</div>
-                    </div>
-                    <div class="preview-controls">
-                        <span class="preview-time" id="previewTime">00:00 / 00:00</span>
-                        <div class="preview-transport">
-                            <button class="transport-btn" id="previewPlayBtn" title="Play" disabled>
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="none">
-                                    <polygon points="6,4 20,12 6,20"></polygon>
-                                </svg>
-                            </button>
-                            <button class="transport-btn hidden" id="previewPauseBtn" title="Pause" disabled>
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="none">
-                                    <rect x="5" y="4" width="4" height="16"></rect>
-                                    <rect x="15" y="4" width="4" height="16"></rect>
-                                </svg>
-                            </button>
-                        </div>
                     </div>
                 </div>
 
