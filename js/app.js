@@ -344,11 +344,15 @@
         return localStorage.getItem('motionai_provider') || 'openrouter';
     }
 
+    function isOpenAICompatible(provider) {
+        return provider === 'openrouter' || provider === 'openai' || provider === 'gemini';
+    }
+
     function buildApiMessage(text, images) {
         var provider = getProvider();
 
-        if (provider === 'openrouter') {
-            // OpenAI format
+        if (isOpenAICompatible(provider)) {
+            // OpenAI-compatible format (OpenRouter, OpenAI, Gemini)
             var content = [];
             if (images && images.length > 0) {
                 images.forEach(function (dataUrl) {
@@ -391,8 +395,26 @@
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': 'Bearer ' + apiKey,
-                    'HTTP-Referer': 'https://motion-ai-assistant.local',
+                    'HTTP-Referer': 'https://motionbastard.local',
                     'X-Title': 'MotionBastard'
+                }
+            };
+        } else if (provider === 'openai') {
+            return {
+                hostname: 'api.openai.com',
+                path: '/v1/chat/completions',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + apiKey
+                }
+            };
+        } else if (provider === 'gemini') {
+            return {
+                hostname: 'generativelanguage.googleapis.com',
+                path: '/v1beta/openai/chat/completions',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + apiKey
                 }
             };
         } else {
@@ -411,7 +433,7 @@
     function buildRequestBody() {
         var provider = getProvider();
 
-        if (provider === 'openrouter') {
+        if (isOpenAICompatible(provider)) {
             return JSON.stringify({
                 model: getModel(),
                 max_tokens: 4096,
@@ -434,13 +456,11 @@
     function parseSSEDelta(event) {
         var provider = getProvider();
 
-        if (provider === 'openrouter') {
-            // OpenAI format: choices[0].delta.content
+        if (isOpenAICompatible(provider)) {
             if (event.choices && event.choices[0] && event.choices[0].delta && event.choices[0].delta.content) {
                 return event.choices[0].delta.content;
             }
         } else {
-            // Anthropic format: delta.text
             if (event.type === 'content_block_delta' && event.delta && event.delta.text) {
                 return event.delta.text;
             }
@@ -754,8 +774,16 @@
     // Show/hide model groups based on provider
     function updateModelOptions() {
         var p = providerSelect.value;
+        var groups = ['OpenRouter', 'Anthropic', 'OpenAI', 'Gemini'];
+        groups.forEach(function (g) {
+            var el = document.getElementById('models' + g);
+            if (el) el.style.display = el.id === 'models' + p.charAt(0).toUpperCase() + p.slice(1) ? '' : 'none';
+        });
+        // Simpler approach: match by provider value
         document.getElementById('modelsOpenRouter').style.display = p === 'openrouter' ? '' : 'none';
         document.getElementById('modelsAnthropic').style.display = p === 'anthropic' ? '' : 'none';
+        document.getElementById('modelsOpenAI').style.display = p === 'openai' ? '' : 'none';
+        document.getElementById('modelsGemini').style.display = p === 'gemini' ? '' : 'none';
 
         // Auto-select first visible option if current is hidden
         var current = modelSelect.value;
