@@ -1,4 +1,4 @@
-// Motion AI Assistant - App Logic
+// MotionBastard - App Logic
 // Phase 2: Claude API integration, streaming responses, code extraction
 
 (function () {
@@ -301,15 +301,11 @@
 
     // ===== Frontend Preview =====
     var previewContainer = document.getElementById('previewContainer');
-    var previewPlayBtn = document.getElementById('previewPlayBtn');
-    var previewPauseBtn = document.getElementById('previewPauseBtn');
     var previewIframe = null;
 
     function renderPreview(codeBlock) {
-        // Clear previous preview
         previewContainer.innerHTML = '';
 
-        // Create iframe for sandboxed rendering
         previewIframe = document.createElement('iframe');
         previewIframe.style.cssText = 'width:100%;height:100%;border:none;background:#1e1e1e;';
         previewIframe.setAttribute('sandbox', 'allow-scripts allow-same-origin');
@@ -320,57 +316,20 @@
         var htmlContent = '';
 
         if (lang === 'html') {
-            // Full HTML — use as-is
             htmlContent = code;
         } else if (lang === 'css') {
-            // CSS animation — wrap in HTML with a demo element
             htmlContent = '<!DOCTYPE html><html><head><style>body{margin:0;display:flex;align-items:center;justify-content:center;height:100vh;background:#1e1e1e;overflow:hidden;}' + code + '</style></head><body><div class="demo"></div></body></html>';
         } else if (lang === 'javascript' || lang === 'js') {
-            // JS — wrap in HTML with canvas
             htmlContent = '<!DOCTYPE html><html><head><style>body{margin:0;background:#1e1e1e;overflow:hidden;}canvas{display:block;}</style></head><body><canvas id="canvas"></canvas><script>' + code + '<\/script></body></html>';
         } else {
-            // Fallback: treat as HTML
             htmlContent = code;
         }
 
-        // Write to iframe
         var doc = previewIframe.contentDocument || previewIframe.contentWindow.document;
         doc.open();
         doc.write(htmlContent);
         doc.close();
-
-        // Enable play/pause buttons
-        previewPlayBtn.disabled = false;
-        previewPauseBtn.disabled = false;
     }
-
-    // Play/Pause toggle for preview
-    previewPlayBtn.addEventListener('click', function () {
-        if (!previewIframe) return;
-        previewPlayBtn.classList.add('hidden');
-        previewPauseBtn.classList.remove('hidden');
-
-        // Reload iframe to restart animations
-        var doc = previewIframe.contentDocument || previewIframe.contentWindow.document;
-        var html = doc.documentElement.outerHTML;
-        doc.open();
-        doc.write(html);
-        doc.close();
-    });
-
-    previewPauseBtn.addEventListener('click', function () {
-        if (!previewIframe) return;
-        previewPauseBtn.classList.add('hidden');
-        previewPlayBtn.classList.remove('hidden');
-
-        // Pause all animations in iframe
-        try {
-            var iframeDoc = previewIframe.contentDocument || previewIframe.contentWindow.document;
-            var style = iframeDoc.createElement('style');
-            style.textContent = '*, *::before, *::after { animation-play-state: paused !important; transition: none !important; }';
-            iframeDoc.head.appendChild(style);
-        } catch (e) {}
-    });
 
     // ===== Claude API =====
     function getApiKey() {
@@ -433,7 +392,7 @@
                     'Content-Type': 'application/json',
                     'Authorization': 'Bearer ' + apiKey,
                     'HTTP-Referer': 'https://motion-ai-assistant.local',
-                    'X-Title': 'Motion AI Assistant'
+                    'X-Title': 'MotionBastard'
                 }
             };
         } else {
@@ -717,8 +676,8 @@
         var welcome = document.createElement('div');
         welcome.className = 'welcome';
         welcome.id = 'welcomeState';
-        welcome.innerHTML = '<div class="welcome-title">Motion AI Assistant</div>' +
-            '<div class="welcome-sub">Describe your motion effect — I\'ll figure out the best way to build it.</div>';
+        welcome.innerHTML = '<div class="welcome-title">MotionBastard</div>' +
+            '<div class="welcome-sub">Describe what you want. I\'ll figure out how to build it.</div>';
         chatMessages.appendChild(welcome);
 
         codeText.textContent = '// Generated code will appear here';
