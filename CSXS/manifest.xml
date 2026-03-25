@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ExtensionManifest Version="12.0" ExtensionBundleId="com.motionai.assistant" ExtensionBundleVersion="0.1.0" ExtensionBundleName="Motion AI Assistant">
+<ExtensionManifest Version="12.0" ExtensionBundleId="com.motionbastard" ExtensionBundleVersion="0.1.0" ExtensionBundleName="MotionBastard">
     <ExtensionList>
-        <Extension Id="com.motionai.assistant.panel" Version="0.1.0"/>
+        <Extension Id="com.motionbastard.panel" Version="0.1.0"/>
     </ExtensionList>
     <ExecutionEnvironment>
         <HostList>
@@ -15,7 +15,7 @@
         </RequiredRuntimeList>
     </ExecutionEnvironment>
     <DispatchInfoList>
-        <Extension Id="com.motionai.assistant.panel">
+        <Extension Id="com.motionbastard.panel">
             <DispatchInfo>
                 <Resources>
                     <MainPath>./index.html</MainPath>
@@ -26,7 +26,7 @@
                 </Lifecycle>
                 <UI>
                     <Type>Panel</Type>
-                    <Menu>Motion AI Assistant</Menu>
+                    <Menu>MotionBastard</Menu>
                     <Geometry>
                         <Size>
                             <Height>600</Height>
